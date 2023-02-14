@@ -1,0 +1,34 @@
+<div class="spacing">
+  <div nz-row nzGutter="16">
+    <div nz-col [nzSm]="12">
+      <input nz-input placeholder="name" [(ngModel)]="data.name" />
+    </div>
+    <div nz-col [nzSm]="12">
+      <input nz-input placeholder="name" [(ngModel)]="data.id" />
+    </div>
+  </div>
+</div>
+
+<h3>config here</h3>
+
+<ng-container *ngIf="data && data.config && data.config.length > 0">
+  <nz-tabset>
+    <nz-tab
+      *ngFor="let config of data.config"
+      [nzTitle]="
+        (config.tier && config.tier.tierName && config.tier.tierName) || ''
+      "
+    >
+      <app-hn-item-config [data]="config"></app-hn-item-config>
+    </nz-tab>
+  </nz-tabset>
+</ng-container>
+
+<ng-container *ngIf="data && data.content && data.content.length > 0">
+  <ng-container *ngFor="let c of data.content">
+    <app-hn-item-content
+      [data]="c"
+      [dataArr]="data.content"
+    ></app-hn-item-content>
+  </ng-container>
+</ng-container>

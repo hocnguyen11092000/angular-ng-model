@@ -1,0 +1,41 @@
+<br />
+<div>
+  <div nz-row nzGutter="16">
+    <div nz-col [nzSm]="6">
+      <input nz-input placeholder="name" [(ngModel)]="data.key" />
+    </div>
+    <div nz-col [nzSm]="6">
+      <input nz-input placeholder="name" [(ngModel)]="data.value" />
+    </div>
+    <div nz-col [nzSm]="6">
+      <button nz-button nzType="primary" (click)="showModal()">Add</button>
+    </div>
+  </div>
+</div>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="The first Modal"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleSubmit()"
+>
+  <ng-container *nzModalContent>
+    <form action="" [formGroup]="contentForm" (ngSubmit)="handleSubmit()">
+      <input
+        class="form-control"
+        placeholder="key"
+        type="text"
+        id="example-tel-input"
+        formControlName="key"
+      />
+      <br />
+      <input
+        class="form-control"
+        placeholder="value"
+        type="text"
+        id="example-tel-input"
+        formControlName="value"
+      />
+    </form>
+  </ng-container>
+</nz-modal>
